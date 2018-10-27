@@ -39,15 +39,15 @@ monthlyRate = $("#rate-input").val().trim();
     });
 
     //firebase watcher + initial loader HINT
-DataTransfer.ref().on("child_added", function(childSnapshot) {
+// DataTransfer.ref().on("child_added", function(childSnapshot) {
 
-    console.log("childSnapshot", childSnapshot.val());
+//     console.log("childSnapshot", childSnapshot.val());
 
-    console.log(childSnapshot.val().name);
-    console.log(childSnapshot.val().role);
-    console.log(childSnapshot.val().startDate);
-    console.log(childSnapshot.val().monthlyRate);
-})
+//     console.log(childSnapshot.val().name);
+//     console.log(childSnapshot.val().role);
+//     console.log(childSnapshot.val().startDate);
+//     console.log(childSnapshot.val().monthlyRate);
+// })
 
 });
 
