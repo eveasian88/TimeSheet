@@ -47,6 +47,7 @@ monthlyRate = $("#rate-input").val().trim();
 //     console.log(childSnapshot.val().role);
 //     console.log(childSnapshot.val().startDate);
 //     console.log(childSnapshot.val().monthlyRate);
+
 // })/timesheet.js
 
 });
