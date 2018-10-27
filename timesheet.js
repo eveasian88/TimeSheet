@@ -1,14 +1,14 @@
-// Initialize Firebase
-var config = {
-    apiKey: "AIzaSyAiNGy92AxI5S1c-C6ZH8mlDxc34aqWy6M",
-    authDomain: "demofirebaseproject-86cbb.firebaseapp.com",
-    databaseURL: "https://demofirebaseproject-86cbb.firebaseio.com",
-    projectId: "demofirebaseproject-86cbb",
-    storageBucket: "demofirebaseproject-86cbb.appspot.com",
-    messagingSenderId: "90144993220"
+ // Initialize Firebase
+ var config = {
+    apiKey: "AIzaSyBb_VvgidrYsaUud7zcbTIDCthA_EfNwPo",
+    authDomain: "demoproject-40b0e.firebaseapp.com",
+    databaseURL: "https://demoproject-40b0e.firebaseio.com",
+    projectId: "demoproject-40b0e",
+    storageBucket: "demoproject-40b0e.appspot.com",
+    messagingSenderId: "100672990588"
   };
-
   firebase.initializeApp(config);
+ 
 
   var database = firebase.database();
 
@@ -39,15 +39,15 @@ monthlyRate = $("#rate-input").val().trim();
     });
 
     //firebase watcher + initial loader HINT
-DataTransfer.ref().on("child_added", function(childSnapshot) {
+// DataTransfer.ref().on("child_added", function(childSnapshot) {
 
-    console.log("childSnapshot", childSnapshot.val());
+//     console.log("childSnapshot", childSnapshot.val());
 
-    console.log(childSnapshot.val().name);
-    console.log(childSnapshot.val().role);
-    console.log(childSnapshot.val().startDate);
-    console.log(childSnapshot.val().monthlyRate);
-})
+//     console.log(childSnapshot.val().name);
+//     console.log(childSnapshot.val().role);
+//     console.log(childSnapshot.val().startDate);
+//     console.log(childSnapshot.val().monthlyRate);
+// })/timesheet.js
 
 });
 

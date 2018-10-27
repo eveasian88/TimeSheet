@@ -1,3 +1,13 @@
-/* #jumbotron-fluid {
-    color: blue;
-} */
+.container {
+    color: black;
+}
+
+.card-header {
+    background-color: blue;
+    color: white;
+}
+
+.btn-default {
+    background-color: blue;
+    color: white;
+}
