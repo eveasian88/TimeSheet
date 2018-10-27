@@ -1,13 +1,18 @@
 .container {
-    color: black;
+    color: white;
+}
+
+.jumbotron-fluid {
+    background-color: navy;
+    text-align: center;
 }
 
 .card-header {
-    background-color: blue;
+    background-color: navy;
     color: white;
 }
 
 .btn-default {
-    background-color: blue;
+    background-color: navy;
     color: white;
 }
