@@ -1,11 +1,11 @@
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyBb_VvgidrYsaUud7zcbTIDCthA_EfNwPo",
-    authDomain: "demoproject-40b0e.firebaseapp.com",
-    databaseURL: "https://demoproject-40b0e.firebaseio.com",
-    projectId: "demoproject-40b0e",
-    storageBucket: "demoproject-40b0e.appspot.com",
-    messagingSenderId: "100672990588"
+    apiKey: "AIzaSyAiNGy92AxI5S1c-C6ZH8mlDxc34aqWy6M",
+    authDomain: "demofirebaseproject-86cbb.firebaseapp.com",
+    databaseURL: "https://demofirebaseproject-86cbb.firebaseio.com",
+    projectId: "demofirebaseproject-86cbb",
+    storageBucket: "demofirebaseproject-86cbb.appspot.com",
+    messagingSenderId: "90144993220"
   };
 
   firebase.initializeApp(config);
@@ -21,23 +21,26 @@ var config = {
   var totalBill = "";
 
   // capture button click
-  $("#add-user").on("click", )
+$("#add-user").on("click", function(event) {
+// don't refresh page
+event.preventDefault();
 
-function createTable() {
+name = $("#name-input").val().trim();
+role = $("#role-input").val().trim();
+startDate = $("#startdate-input").val().trim();
+monthlyRate = $("#rate-input").val().trim();
 
-    mytable = $('<table></table>').attr({ lasc "table" });
-    var rows = new Number($("#rowcount").val());
-    var cols = new Number($("#columncount").val());
-    var tr = [];
-    for (var i = 0; i < rows; i++) {
-        var row = $('<tr></tr>').attr({ class: ["class1", "class2", "class3"].join(' ') }).appendTo(mytable);
-        for (var j = 0; j < cols; j++) {
-            $('<td></td>').text("text1").appendTo(row);
-        }
+    database.ref().push({
+        name: name,
+        role: role,
+        startDate: startDate,
+        monthlyRate: monthlyRate,
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+    });
 
-    }
-    console.log("TTTTT:" + mytable.html());
-    mytable.appendTo("#box");
+DataTransfer.ref().on("child_added", function(childSnapshot) {
+    
+})
 
-}
-$(".submit").on("click", createTable);
+});
+
