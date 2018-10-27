@@ -38,8 +38,15 @@ monthlyRate = $("#rate-input").val().trim();
         dateAdded: firebase.database.ServerValue.TIMESTAMP
     });
 
+    //firebase watcher + initial loader HINT
 DataTransfer.ref().on("child_added", function(childSnapshot) {
-    
+
+    console.log("childSnapshot", childSnapshot.val());
+
+    console.log(childSnapshot.val().name);
+    console.log(childSnapshot.val().role);
+    console.log(childSnapshot.val().startDate);
+    console.log(childSnapshot.val().monthlyRate);
 })
 
 });
