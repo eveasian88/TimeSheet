@@ -54,5 +54,20 @@ $("#add-user").on("click", function (event) {
     var formated = "MM/DD/YYYY";
     var convertedDate = moment(randomDate, formated);
 
+// console.log to confirm the code changes we made worked.
+console.log(convertedDate.format("dddd"));
+console.log(convertedDate.format("hh:mm:ss"));
+
+// to determine the time in years, months, days between today and the randomDate
+console.log(convertedDate).diff(moment(), "year");
+// to determine the number of days between the randomDate and 02/14/2001
+var newDate = moment("02/14/2001", formated);
+console.log(convertedDate.diff(newDate, "days"));
+// to convert the randomDate to unix time (be sure to look up what unix time even is!!!)
+
+// to determine what day of the week and what week of the year this randomDate falls on.
+
+console.log(moment().format("DD/MM/YY hh:mm A"));
+
 });
 
