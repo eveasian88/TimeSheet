@@ -1,11 +1,11 @@
  // Initialize Firebase
  var config = {
-    apiKey: "AIzaSyBb_VvgidrYsaUud7zcbTIDCthA_EfNwPo",
-    authDomain: "demoproject-40b0e.firebaseapp.com",
-    databaseURL: "https://demoproject-40b0e.firebaseio.com",
-    projectId: "demoproject-40b0e",
-    storageBucket: "demoproject-40b0e.appspot.com",
-    messagingSenderId: "100672990588"
+    apiKey: "AIzaSyAiNGy92AxI5S1c-C6ZH8mlDxc34aqWy6M",
+    authDomain: "demofirebaseproject-86cbb.firebaseapp.com",
+    databaseURL: "https://demofirebaseproject-86cbb.firebaseio.com",
+    projectId: "demofirebaseproject-86cbb",
+    storageBucket: "demofirebaseproject-86cbb.appspot.com",
+    messagingSenderId: "90144993220"
   };
   firebase.initializeApp(config);
  
@@ -29,11 +29,14 @@ name = $("#name-input").val().trim();
 role = $("#role-input").val().trim();
 startDate = $("#startdate-input").val().trim();
 monthlyRate = $("#rate-input").val().trim();
+var formatDate =moment(startDate).format("YYYYMMDD");
+
+
 
     database.ref().push({
         name: name,
         role: role,
-        startDate: startDate,
+        startDate: formatDate,
         monthlyRate: monthlyRate,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
     });
@@ -48,7 +51,7 @@ monthlyRate = $("#rate-input").val().trim();
 //     console.log(childSnapshot.val().startDate);
 //     console.log(childSnapshot.val().monthlyRate);
 
-// })/timesheet.js
+// })
 
 });
 
