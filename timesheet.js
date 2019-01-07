@@ -67,15 +67,15 @@ database.ref().on("child_added", function(childSnapshot) {
 
     var empStartPretty = moment.unix(empStart).format("MM/DD/YYYY");
 
- // To calculate the months worked
+ // to calculate the months worked
  var empMonths = moment().diff(moment(empStart, "X"), "months");
  console.log(empMonths);
 
- // Calculate the total billed rate
+ // calculate the total billed rate
  var empBilled = empMonths * empRate;
  console.log(empBilled);
 
- // Create the new row
+ // create the new row
  var newRow = $("<tr>").append(
    $("<td>").text(empName),
    $("<td>").text(empRole),
@@ -85,7 +85,7 @@ database.ref().on("child_added", function(childSnapshot) {
    $("<td>").text(empBilled)
  );
 
- // Append the new row to the table
+ // append the new row to the table
  $("#employee-table > tbody").append(newRow);
 });
 
