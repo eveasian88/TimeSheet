@@ -12,62 +12,80 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-//initial values
-var name = "";
-var role = "";
-var startDate = "";
-var monthsWorked = "";
-var monthlyRate = "";
-var totalBill = "";
 
 // capture button click
 $("#add-user").on("click", function (event) {
     // don't refresh page
     event.preventDefault();
 
-    name = $("#name-input").val().trim();
-    role = $("#role-input").val().trim();
-    startDate = $("#startdate-input").val().trim();
-    monthlyRate = $("#rate-input").val().trim();
+    var empName = $("#name-input").val().trim();
+    var empRole = $("#role-input").val().trim();
+    var empStart = $("#startdate-input").val().trim(), "MM/DD/YYYY").format("X");
+    var empRate = $("#rate-input").val().trim();
 
-    database.ref().push({
-        name: name,
-        role: role,
-        startDate: startDate,
-        monthlyRate: monthlyRate,
-        dateAdded: firebase.database.ServerValue.TIMESTAMP
-    });
+// temporary object for holding employee data
+    var newEmp = {
+    name: empName,
+    role: empRole,
+    start: empStart,
+    rate: empRate
+};
 
-    firebase watcher + initial loader HINT
-    DataTransfer.ref().on("child_added", function (childSnapshot) {
+// uploads employee data to the database
+database.ref().push(newEmp);
 
-        console.log("childSnapshot", childSnapshot.val());
+// logs everything to console
+console.log(newEmp.name);
+console.log(newEmp.role);
+console.log(newEmp.start);
+console.log(newEmp.rate);
 
-        console.log(childSnapshot.val().name);
-        console.log(childSnapshot.val().role);
-        console.log(childSnapshot.val().startDate);
-        console.log(childSnapshot.val().monthlyRate);
+alert("Employee successfully added");
 
-    })
+// clears all of the text-boxes
+$("#employee-name-input").val("");
+$("#role-input").val("");
+$("#start-input").val("");
+$("#rate-input").val("");
+});
 
-    var randomDate = "11/19/2016";
-    var formated = "MM/DD/YYYY";
-    var convertedDate = moment(randomDate, formated);
+database.ref().on("child_added", function(childSnapshot) {
+    console.log(childSnapshot.val());
+  
+    // store everything into a variable.
+    var empName = childSnapshot.val().name;
+    var empRole = childSnapshot.val().role;
+    var empStart = childSnapshot.val().start;
+    var empRate = childSnapshot.val().rate;
+  
+    // employee info
+    console.log(empName);
+    console.log(empRole);
+    console.log(empStart);
+    console.log(empRate);
 
-// console.log to confirm the code changes we made worked.
-console.log(convertedDate.format("dddd"));
-console.log(convertedDate.format("hh:mm:ss"));
 
-// to determine the time in years, months, days between today and the randomDate
-console.log(convertedDate).diff(moment(), "year");
-// to determine the number of days between the randomDate and 02/14/2001
-var newDate = moment("02/14/2001", formated);
-console.log(convertedDate.diff(newDate, "days"));
-// to convert the randomDate to unix time (be sure to look up what unix time even is!!!)
+    var empStartPretty = moment.unix(empStart).format("MM/DD/YYYY");
 
-// to determine what day of the week and what week of the year this randomDate falls on.
+ // To calculate the months worked
+ var empMonths = moment().diff(moment(empStart, "X"), "months");
+ console.log(empMonths);
 
-console.log(moment().format("DD/MM/YY hh:mm A"));
+ // Calculate the total billed rate
+ var empBilled = empMonths * empRate;
+ console.log(empBilled);
 
+ // Create the new row
+ var newRow = $("<tr>").append(
+   $("<td>").text(empName),
+   $("<td>").text(empRole),
+   $("<td>").text(empStartPretty),
+   $("<td>").text(empMonths),
+   $("<td>").text(empRate),
+   $("<td>").text(empBilled)
+ );
+
+ // Append the new row to the table
+ $("#employee-table > tbody").append(newRow);
 });
 
